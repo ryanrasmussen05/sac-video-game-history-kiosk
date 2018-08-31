@@ -1,0 +1,161 @@
+<!DOCTYPE html> 
+<html> 
+	<head>
+		<title>Renewable Energy</title>
+		<style>
+			@font-face {
+				font-family: 'roboto';
+				src: url('assets/Roboto-Bold.ttf');
+			}
+
+			/*GLOBAL STYLES*/
+			body {
+				margin: 0;
+				font-family: roboto;
+				background-color: #ffffff;
+				color: #303030;
+			}
+			.fullscreen {
+				position: absolute;
+				top: 0;
+				bottom: 0;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+
+			/*MAIN VIEW STYLES*/
+			#mainView {
+				display: flex;
+				flex-direction: column;
+			}
+			#mainViewTitle {
+				flex-shrink: 0;
+				text-align: center;
+			}
+			#mainViewButtons {
+				flex-grow: 1;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+				align-items: center;
+				padding: 0 150px;
+			}
+			.videoButtonRow {
+				width: 100%;
+				display: flex;
+				justify-content: space-around;
+			}
+			.videoButton {
+				background-size: contain;
+				background-repeat: no-repeat;
+				background-position: center;
+				width: 350px;
+				height: 350px;
+				display: flex;
+				border-radius: 10px;
+				cursor: pointer;
+			}
+			.videoButton:active {
+				background-color: rgba(0, 0, 0, 0.3);
+			}
+
+			/*VIDEO VIEW STYLES*/
+			#videoView {
+				display: flex;
+				flex-direction: column;
+			}
+			#backButtonContainer {
+				flex-shrink: 0;
+				margin: 10px;
+				font-size: 30px;
+				color: navy;
+			}
+			#videoTitle {
+				flex-shrink: 0;
+				font-size: 115px;
+				text-align: center;
+				padding-bottom: 20px;
+			}
+			#videoContainer {
+				flex-grow: 1;
+				position: relative;;
+			}
+			#bottomSpacer {
+				flex-shrink: 0;
+				height: 50px;
+			}
+			video {
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div id="mainView" class="fullscreen">
+			<div id="mainViewTitle">
+				<div style="font-size: 115px; margin-top: 30px">Renewable Energy</div>
+				<div style="font-size: 50px">Click an icon to play a video</div>
+			</div>
+			<div id="mainViewButtons">
+				<div class="videoButtonRow">
+					<div class="videoButton" style="background-image: url('assets/wind.png')" onclick="playVideo('assets/wind.mp4', 'Wind Turbines')"></div>
+					<div class="videoButton" style="background-image: url('assets/hydro.png')" onclick="playVideo('assets/hydro.mp4', 'Hydroelectric Power')"></div>
+					<div class="videoButton" style="background-image: url('assets/solar.png')" onclick="playVideo('assets/solar.mp4', 'Solar Power')"></div>
+					<div class="videoButton" style="background-image: url('assets/geo.png')" onclick="playVideo('assets/geothermal.mp4', 'Geothermal Energy')"></div>
+				</div>
+			</div>
+		</div>
+
+		<div id="videoView" class="fullscreen" style="display: none">
+			<div id="backButtonContainer">
+				<span onclick="goToHome()" style="cursor: pointer">Back</span>
+			</div>
+			<div id="videoTitle">Video Title</div>
+			<div id="videoContainer">
+				<div class="fullscreen">
+					<video id="videoPlayer">
+						Your browser does not support HTML5 video.
+					</video>
+				</div>
+			</div>
+			<div id="bottomSpacer"></div>
+		</div>
+
+	</body> 
+
+	<script>
+		window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+		
+		var mainView = document.getElementById("mainView");
+		var videoView = document.getElementById("videoView");
+		var videoPlayer = document.getElementById("videoPlayer");
+		var videoTitle = document.getElementById("videoTitle");
+
+        videoPlayer.onended = function() {
+            goToHome();
+        };
+
+		function playVideo(videoFile, title) {
+		    mainView.style.display = "none";
+		    videoView.style.display = "flex";
+
+		    videoTitle.innerText = title;
+
+		    videoPlayer.src = videoFile;
+		    videoPlayer.volume = 1.0;
+		    videoPlayer.load();
+		    videoPlayer.play();
+		}
+
+		function goToHome() {
+            mainView.style.display = "flex";
+            videoView.style.display = "none";
+
+            videoPlayer.pause();
+		}
+	</script> 
+
+</html>
