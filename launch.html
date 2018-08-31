@@ -12,8 +12,8 @@
 			body {
 				margin: 0;
 				font-family: roboto;
-				background-color: #ffffff;
-				color: #303030;
+				background-color: #000000;
+				color: #ffffff;
 			}
 			.fullscreen {
 				position: absolute;
@@ -41,23 +41,62 @@
 				align-items: center;
 				padding: 0 150px;
 			}
-			.videoButtonRow {
+			.linkButtonRow {
 				width: 100%;
 				display: flex;
 				justify-content: space-around;
+				align-items: center;
 			}
-			.videoButton {
-				background-size: contain;
-				background-repeat: no-repeat;
-				background-position: center;
+			.linkButton {
 				width: 350px;
 				height: 350px;
 				display: flex;
+				justify-content: center;
+				align-items: center;
 				border-radius: 10px;
 				cursor: pointer;
+				font-size: 80px;
+				box-sizing: border-box;
 			}
-			.videoButton:active {
-				background-color: rgba(0, 0, 0, 0.3);
+			.linkButton:active {
+				border: 10px solid white;
+			}
+			.forties {
+				background-color: #ff20d9;
+				color: black;
+			}
+			.fifties {
+				background-color: #73ff4e;
+				color: black;
+			}
+			.sixties {
+				background-color: #00faff;
+				color: black;
+			}
+
+			/* DECADE VIEW STYLES*/
+			.decadeView {
+				display: flex;
+				flex-direction: column;
+			}
+			.decadeTitle {
+				flex-shrink: 0;
+				font-size: 115px;
+				text-align: center;
+				padding-bottom: 20px;
+			}
+			.backButton {
+				cursor: pointer;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				display: flex;
+				align-items: center;
+				font-size: 50px;
+			}
+			.backIcon {
+				height: 80px;
+				margin-right: 10px;
 			}
 
 			/*VIDEO VIEW STYLES*/
@@ -70,12 +109,6 @@
 				margin: 10px;
 				font-size: 30px;
 				color: navy;
-			}
-			#videoTitle {
-				flex-shrink: 0;
-				font-size: 115px;
-				text-align: center;
-				padding-bottom: 20px;
 			}
 			#videoContainer {
 				flex-grow: 1;
@@ -96,65 +129,115 @@
 
 		<div id="mainView" class="fullscreen">
 			<div id="mainViewTitle">
-				<div style="font-size: 115px; margin-top: 30px">Renewable Energy</div>
-				<div style="font-size: 50px">Click an icon to play a video</div>
+				<div style="font-size: 115px; margin-top: 30px">Early Years of Video Games</div>
+				<div style="font-size: 50px">1940's through 1960's</div>
 			</div>
 			<div id="mainViewButtons">
-				<div class="videoButtonRow">
-					<div class="videoButton" style="background-image: url('assets/wind.png')" onclick="playVideo('assets/wind.mp4', 'Wind Turbines')"></div>
-					<div class="videoButton" style="background-image: url('assets/hydro.png')" onclick="playVideo('assets/hydro.mp4', 'Hydroelectric Power')"></div>
-					<div class="videoButton" style="background-image: url('assets/solar.png')" onclick="playVideo('assets/solar.mp4', 'Solar Power')"></div>
-					<div class="videoButton" style="background-image: url('assets/geo.png')" onclick="playVideo('assets/geothermal.mp4', 'Geothermal Energy')"></div>
+				<div class="linkButtonRow">
+					<div class="linkButton forties" onclick="goToForties()">1940's</div>
+					<div class="linkButton fifties" onclick="goToFifties()">1950's</div>
+					<div class="linkButton sixties" onclick="goToSixties()">1960's</div>
 				</div>
 			</div>
 		</div>
 
-		<div id="videoView" class="fullscreen" style="display: none">
-			<div id="backButtonContainer">
-				<span onclick="goToHome()" style="cursor: pointer">Back</span>
+		<div id="forties" class="fullscreen decadeView" style="display: none">
+			<div class="decadeTitle">1940's</div>
+
+			<div class="backButton" onclick="goToHome()">
+				<img class="backIcon" src="assets/back.png">Back
 			</div>
-			<div id="videoTitle">Video Title</div>
-			<div id="videoContainer">
-				<div class="fullscreen">
-					<video id="videoPlayer">
-						Your browser does not support HTML5 video.
-					</video>
-				</div>
-			</div>
-			<div id="bottomSpacer"></div>
 		</div>
+
+		<div id="fifties" class="fullscreen decadeView" style="display: none">
+			<div class="decadeTitle">1950's</div>
+
+			<div class="backButton" onclick="goToHome()">
+				<img class="backIcon" src="assets/back.png">Back
+			</div>
+		</div>
+
+		<div id="sixties" class="fullscreen decadeView" style="display: none">
+			<div class="decadeTitle">1960's</div>
+
+			<div class="backButton" onclick="goToHome()">
+				<img class="backIcon" src="assets/back.png">Back
+			</div>
+		</div>
+
+		<!--<div id="videoView" class="fullscreen" style="display: none">-->
+			<!--<div id="backButtonContainer">-->
+				<!--<span onclick="goToHome()" style="cursor: pointer">Back</span>-->
+			<!--</div>-->
+			<!--<div id="videoTitle">Video Title</div>-->
+			<!--<div id="videoContainer">-->
+				<!--<div class="fullscreen">-->
+					<!--<video id="videoPlayer">-->
+						<!--Your browser does not support HTML5 video.-->
+					<!--</video>-->
+				<!--</div>-->
+			<!--</div>-->
+			<!--<div id="bottomSpacer"></div>-->
+		<!--</div>-->
 
 	</body> 
 
 	<script>
-		window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+		//window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
 		
 		var mainView = document.getElementById("mainView");
-		var videoView = document.getElementById("videoView");
-		var videoPlayer = document.getElementById("videoPlayer");
-		var videoTitle = document.getElementById("videoTitle");
+		var fortiesView = document.getElementById("forties");
+		var fiftiesView = document.getElementById("fifties");
+		var sixtiesView = document.getElementById("sixties");
 
-        videoPlayer.onended = function() {
-            goToHome();
-        };
+		//var videoPlayer = document.getElementById("videoPlayer");
 
-		function playVideo(videoFile, title) {
-		    mainView.style.display = "none";
-		    videoView.style.display = "flex";
+        // videoPlayer.onended = function() {
+        //     goToHome();
+        // };
 
-		    videoTitle.innerText = title;
-
-		    videoPlayer.src = videoFile;
-		    videoPlayer.volume = 1.0;
-		    videoPlayer.load();
-		    videoPlayer.play();
-		}
+		// function playVideo(videoFile, title) {
+		//     mainView.style.display = "none";
+		//     videoView.style.display = "flex";
+		//
+		//     videoTitle.innerText = title;
+		//
+		//     videoPlayer.src = videoFile;
+		//     videoPlayer.volume = 1.0;
+		//     videoPlayer.load();
+		//     videoPlayer.play();
+		// }
 
 		function goToHome() {
             mainView.style.display = "flex";
-            videoView.style.display = "none";
+            fortiesView.style.display = "none";
+            fiftiesView.style.display = "none";
+            sixtiesView.style.display = "none";
+            //videoPlayer.pause();
+		}
 
-            videoPlayer.pause();
+		function goToForties() {
+            mainView.style.display = "none";
+            fortiesView.style.display = "flex";
+            fiftiesView.style.display = "none";
+            sixtiesView.style.display = "none";
+            //videoPlayer.pause();
+		}
+
+		function goToFifties() {
+            mainView.style.display = "none";
+            fortiesView.style.display = "none";
+            fiftiesView.style.display = "flex";
+            sixtiesView.style.display = "none";
+            //videoPlayer.pause();
+		}
+
+		function goToSixties() {
+            mainView.style.display = "none";
+            fortiesView.style.display = "none";
+            fiftiesView.style.display = "none";
+            sixtiesView.style.display = "flex";
+            //videoPlayer.pause();
 		}
 	</script> 
 
