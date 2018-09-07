@@ -1,7 +1,7 @@
 <!DOCTYPE html> 
 <html> 
 	<head>
-		<title>Renewable Energy</title>
+		<title>Early Years of Video Games</title>
 		<style>
 			@font-face {
 				font-family: 'roboto';
@@ -34,29 +34,30 @@
 				text-align: center;
 			}
 			#mainViewButtons {
-				flex-grow: 1;
+				flex-shrink: 0;
 				display: flex;
 				flex-direction: column;
 				justify-content: space-around;
 				align-items: center;
-				padding: 0 150px;
+				padding-top: 45px;
 			}
 			.linkButtonRow {
 				width: 100%;
 				display: flex;
-				justify-content: space-around;
+				justify-content: center;
 				align-items: center;
 			}
 			.linkButton {
 				width: 350px;
-				height: 350px;
+				height: 140px;
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				border-radius: 10px;
 				cursor: pointer;
-				font-size: 80px;
+				font-size: 55px;
 				box-sizing: border-box;
+				margin: 0 40px;
 			}
 			.linkButton:active {
 				border: 10px solid white;
@@ -73,6 +74,43 @@
 				background-color: #00faff;
 				color: black;
 			}
+			.videoRow {
+				flex-grow: 1;
+				height: 0;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			.videoContainer {
+				position: relative;;
+				cursor: pointer;
+				width: 50%;
+				height: 75%;
+			}
+			.videoCover {
+				position: absolute;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				z-index: 2;
+			}
+			.videoCoverBackgroundImage {
+				position: absolute;
+				z-index: -1;
+				width: 100%;
+				height: 100%;
+				background-image: url('assets/commercials.png');
+				background-size: cover;
+				background-position: center;
+				opacity: 0.5;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+
+
+
 
 			/* DECADE VIEW STYLES*/
 			.decadeView {
@@ -130,19 +168,30 @@
 		<div id="mainView" class="fullscreen">
 			<div id="mainViewTitle">
 				<div style="font-size: 115px; margin-top: 30px">Early Years of Video Games</div>
-				<div style="font-size: 50px">1940's through 1960's</div>
 			</div>
 			<div id="mainViewButtons">
 				<div class="linkButtonRow">
-					<div class="linkButton forties" onclick="goToForties()">1940's</div>
-					<div class="linkButton fifties" onclick="goToFifties()">1950's</div>
-					<div class="linkButton sixties" onclick="goToSixties()">1960's</div>
+					<div class="linkButton forties" onclick="goToForties()">1947 - 1954</div>
+					<div class="linkButton fifties" onclick="goToFifties()">1955 - 1964</div>
+					<div class="linkButton sixties" onclick="goToSixties()">1965 - 1971</div>
 				</div>
 			</div>
+			<div class="videoRow">
+				<div class="videoContainer" onclick="playMainVideo()">
+					<div id="videoCover" class="fullscreen videoCover">
+						<div class="videoCoverBackgroundImage"></div>
+						<img src="assets/play.png" style="width: 25%"/>
+					</div>
+					<video id="videoPlayerCommercials" src="assets/commercials.mp4">
+						Your browser does not support HTML5 video.
+					</video>
+				</div>
+			</div>
+
 		</div>
 
 		<div id="forties" class="fullscreen decadeView" style="display: none">
-			<div class="decadeTitle">1940's</div>
+			<div class="decadeTitle">1947 - 1954</div>
 
 			<div class="backButton" onclick="goToHome()">
 				<img class="backIcon" src="assets/back.png">Back
@@ -150,7 +199,7 @@
 		</div>
 
 		<div id="fifties" class="fullscreen decadeView" style="display: none">
-			<div class="decadeTitle">1950's</div>
+			<div class="decadeTitle">1955 - 1964</div>
 
 			<div class="backButton" onclick="goToHome()">
 				<img class="backIcon" src="assets/back.png">Back
@@ -158,27 +207,12 @@
 		</div>
 
 		<div id="sixties" class="fullscreen decadeView" style="display: none">
-			<div class="decadeTitle">1960's</div>
+			<div class="decadeTitle">1965 - 1971</div>
 
 			<div class="backButton" onclick="goToHome()">
 				<img class="backIcon" src="assets/back.png">Back
 			</div>
 		</div>
-
-		<!--<div id="videoView" class="fullscreen" style="display: none">-->
-			<!--<div id="backButtonContainer">-->
-				<!--<span onclick="goToHome()" style="cursor: pointer">Back</span>-->
-			<!--</div>-->
-			<!--<div id="videoTitle">Video Title</div>-->
-			<!--<div id="videoContainer">-->
-				<!--<div class="fullscreen">-->
-					<!--<video id="videoPlayer">-->
-						<!--Your browser does not support HTML5 video.-->
-					<!--</video>-->
-				<!--</div>-->
-			<!--</div>-->
-			<!--<div id="bottomSpacer"></div>-->
-		<!--</div>-->
 
 	</body> 
 
@@ -190,30 +224,32 @@
 		var fiftiesView = document.getElementById("fifties");
 		var sixtiesView = document.getElementById("sixties");
 
-		//var videoPlayer = document.getElementById("videoPlayer");
+		var videoPlayerCommercials = document.getElementById("videoPlayerCommercials");
+		var videoCoverCommercials = document.getElementById("videoCover");
 
-        // videoPlayer.onended = function() {
-        //     goToHome();
-        // };
+		videoPlayerCommercials.onended = function() {
+		    resetMainVideo();
+		};
 
-		// function playVideo(videoFile, title) {
-		//     mainView.style.display = "none";
-		//     videoView.style.display = "flex";
-		//
-		//     videoTitle.innerText = title;
-		//
-		//     videoPlayer.src = videoFile;
-		//     videoPlayer.volume = 1.0;
-		//     videoPlayer.load();
-		//     videoPlayer.play();
-		// }
+		function playMainVideo() {
+		    videoCoverCommercials.style.display = "none";
+		    videoPlayerCommercials.volume = 1.0;
+		    videoPlayerCommercials.load();
+		    videoPlayerCommercials.play();
+		}
+
+		function resetMainVideo() {
+            videoPlayerCommercials.pause();
+            videoPlayerCommercials.currentTime = 0;
+            videoCoverCommercials.style.display = "flex";
+		}
 
 		function goToHome() {
             mainView.style.display = "flex";
             fortiesView.style.display = "none";
             fiftiesView.style.display = "none";
             sixtiesView.style.display = "none";
-            //videoPlayer.pause();
+            resetMainVideo();
 		}
 
 		function goToForties() {
@@ -221,7 +257,7 @@
             fortiesView.style.display = "flex";
             fiftiesView.style.display = "none";
             sixtiesView.style.display = "none";
-            //videoPlayer.pause();
+            resetMainVideo();
 		}
 
 		function goToFifties() {
@@ -229,7 +265,7 @@
             fortiesView.style.display = "none";
             fiftiesView.style.display = "flex";
             sixtiesView.style.display = "none";
-            //videoPlayer.pause();
+            resetMainVideo();
 		}
 
 		function goToSixties() {
@@ -237,7 +273,7 @@
             fortiesView.style.display = "none";
             fiftiesView.style.display = "none";
             sixtiesView.style.display = "flex";
-            //videoPlayer.pause();
+            resetMainVideo();
 		}
 	</script> 
 
