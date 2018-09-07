@@ -1,0 +1,106 @@
+* {
+    transition: all 500ms;
+}
+
+button {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    padding: 15px;
+    background: black;
+    color: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.sign {
+    padding: 6vw;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #fff, 5px 5px 5px #00f, -5px -5px 5px #00f, -5px 5px 5px #00f, 5px -5px 5px #00f, 0 -5px 5px #00f, 5px 0 5px #00f, 0 5px 5px #00f, 0 0 15px #fff;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background: #000;
+    text-align: center;
+    animation: power-sign 400ms 0s 4 cubic-bezier(1.000, 0.000, 1.000, 0.000), sign 6s 2000ms infinite alternate;
+}
+
+.Neon {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 12vw;
+    font-weight: 100;
+    text-shadow: 0 0 15px #f00, 5px 5px 5px #f00, -5px -5px 5px #f00, -5px 5px 5px #f00, 5px -5px 5px #f00, 0 -5px 5px #f00, 5px 0 5px #f00, 0 5px 5px #f00, 0 0 15px #fff;
+}
+
+.V {
+    animation: power 100ms 0s 6 cubic-bezier(1.000, 0.000, 1.000, 0.000), flicker 3s 1600ms infinite alternate;
+}
+
+.I {
+    animation: power 300ms 0s 2 cubic-bezier(1.000, 0.000, 1.000, 0.000), flicker 2s 600ms infinite alternate;
+}
+
+.D {
+    animation: power 200ms 0s 4 cubic-bezier(1.000, 0.000, 1.000, 0.000), flicker 5s 800ms infinite alternate;
+}
+
+.E {
+    animation: power 200ms 0s 4 cubic-bezier(1.000, 0.000, 1.000, 0.000), flicker 8s 1000ms infinite alternate;
+}
+
+.O {
+    animation: power 500ms 0s 4 cubic-bezier(1.000, 0.000, 1.000, 0.000), flicker 6s 400ms infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        text-shadow: 0 0 15px #f00, 5px 5px 5px #f00, -5px -5px 5px #f00, -5px 5px 5px #f00, 5px -5px 5px #f00, 0 -5px 5px #f00, 5px 0 5px #f00, 0 5px 5px #f00, 0 0 15px #fff;
+    }
+    5% {
+        text-shadow: 0 0 15px rgba(255, 0, 0, 0.5), 5px 5px 5px rgba(255, 0, 0, 0.5), -5px -5px 5px rgba(255, 0, 0, 0.5), -5px 5px 5px rgba(255, 0, 0, 0.5), 5px -5px 5px rgba(255, 0, 0, 0.5), 0 -5px 5px rgba(255, 0, 0, 0.5), 5px 0 5px rgba(255, 0, 0, 0.5), 0 5px 5px rgba(255, 0, 0, 0.5), 0 0 15px #fff;
+    }
+    7% {
+        text-shadow: 0 0 15px #f00, 5px 5px 5px #f00, -5px -5px 5px #f00, -5px 5px 5px #f00, 5px -5px 5px #f00, 0 -5px 5px #f00, 5px 0 5px #f00, 0 5px 5px #f00, 0 0 15px #fff;
+    }
+    11% {
+        text-shadow: 0 0 15px rgba(255, 0, 0, 0.5), 5px 5px 5px rgba(255, 0, 0, 0.5), -5px -5px 5px rgba(255, 0, 0, 0.5), -5px 5px 5px rgba(255, 0, 0, 0.8), 5px -5px 5px rgba(255, 0, 0, 0.5), 0 -5px 5px rgba(255, 0, 0, 0.5), 5px 0 5px rgba(255, 0, 0, 0.8), 0 5px 5px rgba(255, 0, 0, 0.5), 0 0 15px #fff;
+    }
+    15% {
+        text-shadow: 0 0 15px #f00, 5px 5px 5px #f00, -5px -5px 5px #f00, -5px 5px 5px #f00, 5px -5px 5px #f00, 0 -5px 5px #f00, 5px 0 5px #f00, 0 5px 5px #f00, 0 0 15px #fff;
+    }
+    60% {
+        text-shadow: 0 0 15px #f00, 5px 5px 5px #f00, -5px -5px 5px #f00, -5px 5px 5px #f00, 5px -5px 5px #f00, 0 -5px 5px #f00, 5px 0 5px #f00, 0 5px 5px #f00, 0 0 15px #fff;
+    }
+    75% {
+        text-shadow: 0 0 15px rgba(255, 0, 0, 0.5), 5px 5px 5px rgba(255, 0, 0, 0.5), -5px -5px 5px rgba(255, 0, 0, 0.5), -5px 5px 5px rgba(255, 0, 0, 0.5), 5px -5px 5px rgba(255, 0, 0, 0.5), 0 -5px 5px rgba(255, 0, 0, 0.5), 5px 0 5px rgba(255, 0, 0, 0.5), 0 5px 5px rgba(255, 0, 0, 0.5), 0 0 15px #fff;
+    }
+    85% {
+        text-shadow: 0 0 15px rgba(255, 0, 0, 0.2), 5px 5px 5px rgba(255, 0, 0, 0.2), -5px -5px 5px rgba(255, 0, 0, 0.2), -5px 5px 5px rgba(255, 0, 0, 0.2), 5px -5px 5px rgba(255, 0, 0, 0.2), 0 -5px 5px rgba(255, 0, 0, 0.2), 5px 0 5px rgba(255, 0, 0, 0.2), 0 5px 5px rgba(255, 0, 0, 0.2), 0 0 15px #fff;
+    }
+}
+
+@keyframes sign {
+    0% {
+        box-shadow: 0 0 10px #fff, 5px 5px 5px #00f, -5px -5px 5px #00f, -5px 5px 5px #00f, 5px -5px 5px #00f, 0 -5px 5px #00f, 5px 0 5px #00f, 0 5px 5px #00f, 0 0 15px #fff;
+    }
+    50% {
+        box-shadow: 0 0 15px #fff, 5px 5px 15px #00f, -5px -5px 25px #00f, -5px 5px 15px #00f, 5px -5px 10px #00f, 0 -5px 15px #00f, 5px 0 10px #00f, 0 5px 5px #00f, 0 0 15px #fff;
+    }
+}
+
+@keyframes power {
+    0% {
+        text-shadow: none;
+    }
+    100% {
+        text-shadow: 0 0 15px #f00, 5px 5px 5px #f00, -5px -5px 5px #f00, -5px 5px 5px #f00, 5px -5px 5px #f00, 0 -5px 5px #f00, 5px 0 5px #f00, 0 5px 5px #f00, 0 0 15px #fff;
+    }
+}
+
+@keyframes power-sign {
+    0% {
+        box-shadow: none !important;
+    }
+    100% {
+        box-shadow: 0 0 15px #00f, 5px 5px 5px #00f, -5px -5px 5px #00f, -5px 5px 5px #00f, 5px -5px 5px #00f, 0 -5px 5px #00f, 5px 0 5px #00f, 0 5px 5px #00f, 0 0 15px #fff;
+    }
+}

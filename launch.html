@@ -2,16 +2,30 @@
 <html> 
 	<head>
 		<title>Early Years of Video Games</title>
+		<link rel="stylesheet" href="assets/video.css">
 		<style>
 			@font-face {
-				font-family: 'roboto';
-				src: url('assets/Roboto-Bold.ttf');
+				font-family: "RobotoCustom";
+				font-weight: 100;
+				src: url("assets/Roboto-Thin.ttf") format("truetype");
+			}
+
+			@font-face {
+				font-family: "RobotoCustom";
+				font-weight: 400;
+				src: url("assets/Roboto-Regular.ttf") format("truetype");
+			}
+
+			@font-face {
+				font-family: "RobotoCustom";
+				font-weight: 700;
+				src: url("assets/Roboto-Bold.ttf") format("truetype");
 			}
 
 			/*GLOBAL STYLES*/
 			body {
 				margin: 0;
-				font-family: roboto;
+				font-family: RobotoCustom;
 				background-color: #000000;
 				color: #ffffff;
 			}
@@ -200,6 +214,14 @@
 
 		<div id="fifties" class="fullscreen decadeView" style="display: none">
 			<div class="decadeTitle">1955 - 1964</div>
+
+			<div class="sign">
+				<span class="Neon V">V</span>
+				<span class="Neon I">I</span>
+				<span class="Neon D">D</span>
+				<span class="Neon E">E</span>
+				<span class="Neon O">O</span>
+			</div>
 
 			<div class="backButton" onclick="goToHome()">
 				<img class="backIcon" src="assets/back.png">Back
