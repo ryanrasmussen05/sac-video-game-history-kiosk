@@ -13,7 +13,8 @@ button {
 }
 
 .sign {
-    padding: 6vw;
+    cursor: pointer;
+    padding: 3vw 2vw;
     border-radius: 50%;
     box-shadow: 0 0 10px #fff, 5px 5px 5px #00f, -5px -5px 5px #00f, -5px 5px 5px #00f, 5px -5px 5px #00f, 0 -5px 5px #00f, 5px 0 5px #00f, 0 5px 5px #00f, 0 0 15px #fff;
     display: flex;
@@ -26,7 +27,7 @@ button {
 
 .Neon {
     color: rgba(255, 255, 255, 0.2);
-    font-size: 12vw;
+    font-size: 6vw;
     font-weight: 100;
     text-shadow: 0 0 15px #f00, 5px 5px 5px #f00, -5px -5px 5px #f00, -5px 5px 5px #f00, 5px -5px 5px #f00, 0 -5px 5px #f00, 5px 0 5px #f00, 0 5px 5px #f00, 0 0 15px #fff;
 }

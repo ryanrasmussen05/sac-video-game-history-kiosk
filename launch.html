@@ -22,6 +22,10 @@
 				src: url("assets/Roboto-Bold.ttf") format("truetype");
 			}
 
+			.font-700 {
+				font-weight: 700;
+			}
+
 			/*GLOBAL STYLES*/
 			body {
 				margin: 0;
@@ -46,6 +50,7 @@
 			#mainViewTitle {
 				flex-shrink: 0;
 				text-align: center;
+				font-weight: 700;
 			}
 			#mainViewButtons {
 				flex-shrink: 0;
@@ -53,7 +58,7 @@
 				flex-direction: column;
 				justify-content: space-around;
 				align-items: center;
-				padding-top: 45px;
+				padding-top: 60px;
 			}
 			.linkButtonRow {
 				width: 100%;
@@ -72,6 +77,7 @@
 				font-size: 55px;
 				box-sizing: border-box;
 				margin: 0 40px;
+				font-weight: 700;
 			}
 			.linkButton:active {
 				border: 10px solid white;
@@ -123,19 +129,40 @@
 				right: 0;
 			}
 
-
-
-
 			/* DECADE VIEW STYLES*/
 			.decadeView {
 				display: flex;
 				flex-direction: column;
+				align-items: center;
 			}
 			.decadeTitle {
 				flex-shrink: 0;
 				font-size: 115px;
+				font-weight: 700;
 				text-align: center;
-				padding-bottom: 20px;
+				padding-top: 20px;
+				padding-bottom: 30px;
+			}
+			.decadeText{
+				width: 75%;
+			}
+			.decadeText > ul > li  {
+				font-size: 25px;
+				margin-bottom: 25px;
+				display: inline-block;
+			}
+			.decadeText > ul > li > .left  {
+				width: 10%;
+				float: left;
+				font-size: 30px;
+			}
+			.decadeText > ul > li > .right  {
+				width: 90%;
+				float: right;
+			}
+			.sign-container {
+				width: 25%;
+				margin-top: 50px;
 			}
 			.backButton {
 				cursor: pointer;
@@ -207,6 +234,37 @@
 		<div id="forties" class="fullscreen decadeView" style="display: none">
 			<div class="decadeTitle">1947 - 1954</div>
 
+			<div class="decadeText">
+				<ul>
+					<li>
+						<div class="left">1947</div>
+						<div class="right">Thomas T. Goldsmith, Jr. and Estle Ray Mann invent the cathode-ray tube amusement device, the first interactive electronic game. Players control a beam with knobs and aim it at plastic targets. Though patented, the device never advances beyond a prototype.</div>
+					</li>
+					<li>
+						<div class="left">1950</div>
+						<div class="right">Josef Kates unveils Bertie the Brain, a machine that pits players against an artificial intelligence in a cutthroat game of tic-tac-toe. After its presentation in the Canadian National Exhibition, Bertie is dismantled and forgotten about.</div>
+					</li>
+					<li>
+						<div class="left">1951</div>
+						<div class="right">For the 1951 Festival of Britain, Ferranti premiers Nimrod, a computer that plays a virtual game of Nim. Like its predecessor Bertie, Nimrod was only meant for exhibition and dismantled afterwards.</div>
+					</li>
+					<li>
+						<div class="left">1952</div>
+						<div class="right">Cambridge student A. S. Douglas programs a game called OXO for a thesis. Though it is a simple game of tic-tac-toe like Bertie, it is one of the first games to utilize an electronic screen display, rather than light bulbs. After Douglas demonstrates it, he wipes the memory from the hardware.</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="sign-container">
+				<div class="sign">
+					<span class="Neon V">V</span>
+					<span class="Neon I">I</span>
+					<span class="Neon D">D</span>
+					<span class="Neon E">E</span>
+					<span class="Neon O">O</span>
+				</div>
+			</div>
+
 			<div class="backButton" onclick="goToHome()">
 				<img class="backIcon" src="assets/back.png">Back
 			</div>
@@ -215,12 +273,27 @@
 		<div id="fifties" class="fullscreen decadeView" style="display: none">
 			<div class="decadeTitle">1955 - 1964</div>
 
-			<div class="sign">
-				<span class="Neon V">V</span>
-				<span class="Neon I">I</span>
-				<span class="Neon D">D</span>
-				<span class="Neon E">E</span>
-				<span class="Neon O">O</span>
+			<div class="decadeText">
+				<ul>
+					<li>
+						<div class="left">1958</div>
+						<div class="right">Brookhaven National Laboratory displays Tennis For Two, a virtual tennis game designed by William Higinbotham. It is the first video game made purely for entertainment.</div>
+					</li>
+					<li>
+						<div class="left">1962</div>
+						<div class="right">Steve Russell develops Spacewar! for the Massachusetts Institute of Technology. Eventually, it is installed on other computers of the same type at other academic institutions, making it the first video game available at multiple locations. As sitting at the computer for extended periods of time became uncomfortable, two of Russell’s collaborators created the first detachable controller.</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="sign-container">
+				<div class="sign">
+					<span class="Neon V">V</span>
+					<span class="Neon I">I</span>
+					<span class="Neon D">D</span>
+					<span class="Neon E">E</span>
+					<span class="Neon O">O</span>
+				</div>
 			</div>
 
 			<div class="backButton" onclick="goToHome()">
@@ -230,6 +303,29 @@
 
 		<div id="sixties" class="fullscreen decadeView" style="display: none">
 			<div class="decadeTitle">1965 - 1971</div>
+
+			<div class="decadeText">
+				<ul>
+					<li>
+						<div class="left">1968</div>
+						<div class="right">Doug Dyment develops The Sumer Game, wherein players control grain management as the ancient Babylonian king Hammurabi. This is one of the first strategy video games.</div>
+					</li>
+					<li>
+						<div class="left">1971</div>
+						<div class="right">Nutting Associates releases Computer Space, the first commercial video arcade game. Simultaneously, Bill Pitts and Hugh Tuck demonstrate their Galaxy Game at Stanford University, using surplus B-52 controls as handles and jukebox coin slots to collect money. From now on, video game enthusiasts would have to pay to play.</div>
+					</li>
+				</ul>
+			</div>
+
+			<div class="sign-container">
+				<div class="sign">
+					<span class="Neon V">V</span>
+					<span class="Neon I">I</span>
+					<span class="Neon D">D</span>
+					<span class="Neon E">E</span>
+					<span class="Neon O">O</span>
+				</div>
+			</div>
 
 			<div class="backButton" onclick="goToHome()">
 				<img class="backIcon" src="assets/back.png">Back
