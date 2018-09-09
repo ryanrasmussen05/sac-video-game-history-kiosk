@@ -101,7 +101,7 @@
 				justify-content: center;
 				align-items: center;
 			}
-			.videoContainer {
+			.mainVideoContainer {
 				position: relative;;
 				cursor: pointer;
 				width: 50%;
@@ -179,23 +179,26 @@
 			}
 
 			/*VIDEO VIEW STYLES*/
-			#videoView {
+			.videoView {
 				display: flex;
 				flex-direction: column;
+				align-items: center;
 			}
-			#backButtonContainer {
+			.videoTitle {
 				flex-shrink: 0;
-				margin: 10px;
-				font-size: 30px;
-				color: navy;
+				font-size: 115px;
+				font-weight: 700;
+				text-align: center;
+				padding-top: 20px;
+				padding-bottom: 30px;
 			}
-			#videoContainer {
-				flex-grow: 1;
-				position: relative;;
+			.videoContainer {
+				flex: 1;
+				width: 90%;
+				position: relative;
 			}
-			#bottomSpacer {
-				flex-shrink: 0;
-				height: 50px;
+			.bottom-spacer {
+				height: 140px;
 			}
 			video {
 				width: 100%;
@@ -218,7 +221,7 @@
 				</div>
 			</div>
 			<div class="videoRow">
-				<div class="videoContainer" onclick="playMainVideo()">
+				<div class="mainVideoContainer" onclick="playMainVideo()">
 					<div id="videoCover" class="fullscreen videoCover">
 						<div class="videoCoverBackgroundImage"></div>
 						<img src="assets/play.png" style="width: 25%"/>
@@ -255,7 +258,7 @@
 				</ul>
 			</div>
 
-			<div class="sign-container">
+			<div class="sign-container" onclick="goToFortiesVideo()">
 				<div class="sign">
 					<span class="Neon V">V</span>
 					<span class="Neon I">I</span>
@@ -286,7 +289,7 @@
 				</ul>
 			</div>
 
-			<div class="sign-container">
+			<div class="sign-container" onclick="goToFiftiesVideo()">
 				<div class="sign">
 					<span class="Neon V">V</span>
 					<span class="Neon I">I</span>
@@ -317,7 +320,7 @@
 				</ul>
 			</div>
 
-			<div class="sign-container">
+			<div class="sign-container" onclick="goToSixtiesVideo()">
 				<div class="sign">
 					<span class="Neon V">V</span>
 					<span class="Neon I">I</span>
@@ -332,21 +335,85 @@
 			</div>
 		</div>
 
+		<div id="forties-video" class="fullscreen videoView" style="display:none">
+			<div class="videoTitle">1947 - 1954</div>
+			<div class="videoContainer">
+				<div class="fullscreen">
+					<video id="fortiesVideoPlayer" src="assets/forties.mp4">
+						Your browser does not support HTML5 video.
+					</video>
+				</div>
+			</div>
+			<div class="bottom-spacer"></div>
+			<div class="backButton" onclick="resetFortiesVideo()">
+				<img class="backIcon" src="assets/back.png">Back
+			</div>
+		</div>
+
+		<div id="fifties-video" class="fullscreen videoView" style="display:none">
+			<div class="videoTitle">1955 - 1964</div>
+			<div class="videoContainer">
+				<div class="fullscreen">
+					<video id="fiftiesVideoPlayer" src="assets/fifties.mp4">
+						Your browser does not support HTML5 video.
+					</video>
+				</div>
+			</div>
+			<div class="bottom-spacer"></div>
+			<div class="backButton" onclick="resetFiftiesVideo()">
+				<img class="backIcon" src="assets/back.png">Back
+			</div>
+		</div>
+
+		<div id="sixties-video" class="fullscreen videoView" style="display:none">
+			<div class="videoTitle">1965 - 1971</div>
+			<div class="videoContainer">
+				<div class="fullscreen">
+					<video id="sixtiesVideoPlayer" src="assets/sixties.mp4">
+						Your browser does not support HTML5 video.
+					</video>
+				</div>
+			</div>
+			<div class="bottom-spacer"></div>
+			<div class="backButton" onclick="resetSixtiesVideo()">
+				<img class="backIcon" src="assets/back.png">Back
+			</div>
+		</div>
+
 	</body> 
 
 	<script>
-		//window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
+		window.addEventListener("contextmenu", function(e) { e.preventDefault(); });
 		
 		var mainView = document.getElementById("mainView");
 		var fortiesView = document.getElementById("forties");
+		var fortiesVideoView = document.getElementById("forties-video");
 		var fiftiesView = document.getElementById("fifties");
+		var fiftiesVideoView = document.getElementById("fifties-video");
 		var sixtiesView = document.getElementById("sixties");
+		var sixtiesVideoView = document.getElementById("sixties-video");
 
 		var videoPlayerCommercials = document.getElementById("videoPlayerCommercials");
 		var videoCoverCommercials = document.getElementById("videoCover");
 
+		var videoPlayerForties = document.getElementById("fortiesVideoPlayer");
+		var videoPlayerFifties = document.getElementById("fiftiesVideoPlayer");
+		var videoPlayerSixties = document.getElementById("sixtiesVideoPlayer");
+
 		videoPlayerCommercials.onended = function() {
 		    resetMainVideo();
+		};
+
+		videoPlayerForties.onended = function() {
+		    resetFortiesVideo();
+		};
+
+		videoPlayerFifties.onended = function() {
+		    resetFiftiesVideo();
+		};
+
+		videoPlayerSixties.onended = function() {
+		    resetSixtiesVideo();
 		};
 
 		function playMainVideo() {
@@ -361,6 +428,27 @@
             videoPlayerCommercials.currentTime = 0;
             videoCoverCommercials.style.display = "flex";
 		}
+
+		function resetFortiesVideo() {
+		    videoPlayerForties.pause();
+		    videoPlayerForties.currentTime = 0;
+            fortiesVideoView.style.display = "none";
+            fortiesView.style.display = "flex";
+		}
+
+        function resetFiftiesVideo() {
+            videoPlayerFifties.pause();
+            videoPlayerFifties.currentTime = 0;
+            fiftiesVideoView.style.display = "none";
+            fiftiesView.style.display = "flex";
+        }
+
+        function resetSixtiesVideo() {
+            videoPlayerSixties.pause();
+            videoPlayerSixties.currentTime = 0;
+            sixtiesVideoView.style.display = "none";
+            sixtiesView.style.display = "flex";
+        }
 
 		function goToHome() {
             mainView.style.display = "flex";
@@ -393,6 +481,30 @@
             sixtiesView.style.display = "flex";
             resetMainVideo();
 		}
+
+		function goToFortiesVideo() {
+            fortiesView.style.display = "none";
+            fortiesVideoView.style.display = "flex";
+            videoPlayerForties.volume = 1.0;
+            videoPlayerForties.load();
+            videoPlayerForties.play();
+		}
+
+        function goToFiftiesVideo() {
+            fiftiesView.style.display = "none";
+            fiftiesVideoView.style.display = "flex";
+            videoPlayerFifties.volume = 1.0;
+            videoPlayerFifties.load();
+            videoPlayerFifties.play();
+        }
+
+        function goToSixtiesVideo() {
+            sixtiesView.style.display = "none";
+            sixtiesVideoView.style.display = "flex";
+            videoPlayerSixties.volume = 1.0;
+            videoPlayerSixties.load();
+            videoPlayerSixties.play();
+        }
 	</script> 
 
 </html>
