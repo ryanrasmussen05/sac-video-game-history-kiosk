@@ -402,8 +402,19 @@
 		var videoPlayerFifties = document.getElementById("fiftiesVideoPlayer");
 		var videoPlayerSixties = document.getElementById("sixtiesVideoPlayer");
 
+		var commercialsPlaying = false;
+
+		videoPlayerCommercials.onplay = function() {
+		    commercialsPlaying = true;
+		};
+
+		videoPlayerCommercials.onpause = function() {
+		    commercialsPlaying = false;
+		};
+
 		videoPlayerCommercials.onended = function() {
 		    resetMainVideo();
+		    commercialsPlaying = false;
 		};
 
 		videoPlayerForties.onended = function() {
@@ -419,10 +430,14 @@
 		};
 
 		function playMainVideo() {
-		    videoCoverCommercials.style.display = "none";
-		    videoPlayerCommercials.volume = 1.0;
-		    videoPlayerCommercials.load();
-		    videoPlayerCommercials.play();
+		    if (commercialsPlaying) {
+		        resetMainVideo();
+			} else {
+                videoCoverCommercials.style.display = "none";
+                videoPlayerCommercials.volume = 1.0;
+                videoPlayerCommercials.load();
+                videoPlayerCommercials.play();
+			}
 		}
 
 		function resetMainVideo() {
