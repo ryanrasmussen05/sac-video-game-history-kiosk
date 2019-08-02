@@ -1,3 +1,5 @@
+# SAC Museum "History of Video Games" kiosk app
+
 Open "launch.html" to open renewable engery videos application in chrome
 
 press F11 to toggle full screen view in chrome
